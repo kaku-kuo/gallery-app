@@ -1,5 +1,7 @@
 import React,{useContext} from 'react';
+import {Link} from 'react-router-dom';
 import GalleryContext from '../../context/galleryContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
 
@@ -10,20 +12,24 @@ const {setLocation,showLocation} = galleryContext;
 
 const onClick = () => {
     setLocation();
-    console.log(showLocation)
-    console.log(location.name);
 }   
     return (
         <div className="eachPhoto">
-            <img className="profileImage" src={user.profile_image.small} alt="Avatar"/>
-            <span className="profileName">{user.name.replace(/\s/g, '')}</span>
-            {!showLocation ? <span className="speech-bubble"><span className="locationName">{location.name ? location.name :'Somewhere...'}</span></span> : <span></span>
-                
+            <Link to={`/photoGrapher/${user.username}`}><img className="profileImage" src={user.profile_image.small} alt="Avatar"/></Link>
+            <Link to={`/photoGrapher/${user.username}`}><span className="profileName">{user.username}</span></Link>
+            {!showLocation ? 
+            <span className="speech-bubble">
+                <span className="locationName">
+                    {location.name ? location.name :'Somewhere...'}
+                </span>
+            </span> 
+            : 
+            <span></span>    
             }
             <img onClick={onClick} className="mainPhoto" src={urls.regular} alt='photos'/>
-            <i className="far fa-heart"></i>
-            <i className="far fa-comment"></i>
-            <i className="far fa-paper-plane"></i>
+            <FontAwesomeIcon icon={['far', 'heart']}/>
+            <FontAwesomeIcon icon={['far', 'comment']}/>
+            <FontAwesomeIcon icon={['far','paper-plane']}/>
             <p className="likes"><strong>{likes}</strong> Likes</p>
         </div>
     )
