@@ -27,7 +27,7 @@ const onSubmit = e => {
 const onChange = e => setText(e.target.value);
    
     return (
-        <div>
+        <div className="container-fluid searchbar">
            <form  onSubmit={onSubmit} className='form-group'>  
               <input onChange={onChange} className='form-control' type='text' name='text' value={text} placeholder='Search for beautiful photos'/> 
            </form> 

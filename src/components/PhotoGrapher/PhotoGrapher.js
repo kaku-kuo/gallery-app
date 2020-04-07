@@ -8,15 +8,13 @@ import GalleryContext from '../../context/galleryContext';
 const PhotoGrapher = ({match}) => {
 const galleryContext = useContext(GalleryContext);
 const {searchUser,getUserPhotos,userPhotos,user,loading} = galleryContext;
-
-useEffect(() => {
-    searchUser(match.params.username);
-    getUserPhotos(match.params.username);
-    // eslint-disable-next-line
-},[])
-
 const {profile_image,name,total_photos,location,bio} = user;
 
+useEffect(() => {
+   searchUser(match.params.username);
+   getUserPhotos(match.params.username);
+   // eslint-disable-next-line
+},[])
 
 if(loading) return <Spinner/>
   
@@ -36,13 +34,14 @@ if(loading) return <Spinner/>
            </div> 
             <p className="bio">{bio ? bio : "Bio is empty"}</p>
         </div>
-
             <hr className="my-5"/>
-
              <div className="userPhotos">
                {userPhotos.map(userPhoto => (
                   <UserPhotos key={userPhoto.id} userPhoto={userPhoto} /> 
                ))}
+            </div>
+            <div className="container text-center text-muted my-5">
+               Copyright 2020 KakuTech
             </div>
        </div> 
     )  

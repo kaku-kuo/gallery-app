@@ -14,24 +14,23 @@ const onClick = () => {
     setLocation();
 }   
     return (
+       
         <div className="eachPhoto">
             <Link to={`/photoGrapher/${user.username}`}><img className="profileImage" src={user.profile_image.small} alt="Avatar"/></Link>
             <Link to={`/photoGrapher/${user.username}`}><span className="profileName">{user.username}</span></Link>
-            {!showLocation ? 
-            <span className="speech-bubble">
-                <span className="locationName">
-                    {location.name ? location.name :'Somewhere...'}
-                </span>
-            </span> 
-            : 
-            <span></span>    
-            }
             <img onClick={onClick} className="mainPhoto" src={urls.regular} alt='photos'/>
             <FontAwesomeIcon icon={['far', 'heart']}/>
             <FontAwesomeIcon icon={['far', 'comment']}/>
             <FontAwesomeIcon icon={['far','paper-plane']}/>
             <p className="likes"><strong>{likes}</strong> Likes</p>
+           <div className="onbubble"> 
+            {!showLocation && 
+            <div className="speech-bubble">
+                {location.name ? location.name :'Somewhere...'}
+            </div>}
+           </div>
         </div>
+        
     )
 }
 

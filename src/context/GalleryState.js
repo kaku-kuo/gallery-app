@@ -5,7 +5,7 @@ import GalleryReducer from './galleryReducer';
 import {SEARCH_PHOTOS,SEARCH_USER,GET_USER_PHOTOS,SET_LOADING,SET_LOCATION} from './type'
 
 
-let key = 'p9ODOuMCQb-7jfZGumpd8S8sGqZDvK8a98Rca1B-6yE';
+let key = 'tEscdJTacKLUdc1YMTWTkWHcKAtgIchVhoi4swbHjw8';
 
 
 const GalleryState = props => {
@@ -13,7 +13,7 @@ const GalleryState = props => {
         photos:[],
         user:{},
         userPhotos:[],
-        loading:false,
+        loading:false, 
         showLocation:true
     }
 
@@ -35,8 +35,9 @@ const GalleryState = props => {
     // Get user photos
     const getUserPhotos = async username => {
         setLoading();
-        const res = await axios.get(`https://api.unsplash.com/users/${username}/photos/?client_id=${key}`);
+        const res = await axios.get(`https://api.unsplash.com/users/${username}/photos/?client_id=${key}&per_page=30`);
         dispatch({type:GET_USER_PHOTOS,payload:res.data});
+       
     }
     // Set location
     const setLocation = () => dispatch({type:SET_LOCATION}) 

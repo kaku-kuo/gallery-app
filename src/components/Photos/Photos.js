@@ -12,7 +12,7 @@ const {photos,loading} = galleryContext;
       return <Spinner/>   
     }else{
         return (
-        <div className='container'>
+        <div className='container-fluid'>
             {photos.map(photo => (
                 <PhotoItem key={photo.id} photo={photo} /> 
             ))}       

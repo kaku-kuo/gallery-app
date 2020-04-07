@@ -16,7 +16,7 @@ const UserPhotos = ({userPhoto:{urls,likes}}) => {
             <a onMouseOver={onMouseOver} onMouseLeave={onMouseLeave} href={urls.regular}>
                <img className="userPhoto" src={urls.regular} alt="userP"/>
               
-               {photo ? <div className="photolikes"><FontAwesomeIcon className="likesIcon" icon={['fas', 'heart']}/>{likes}</div> : <div/>}
+               {photo && <div className="photolikes"><FontAwesomeIcon className="likesIcon" icon={['fas', 'heart']}/>{likes}</div>}
                 
             </a>
          </div>
